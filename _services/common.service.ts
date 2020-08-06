@@ -19,7 +19,6 @@ export class CommonService implements OnDestroy {
   defaultImage: any = '/assets/images/defaultImage.png';
   defaultTeamImage: any = '/assets/images/defaultTeamImage.png';
   defaultLogoImage: any = '/assets/images/logo_default.png';
-  defaultHospitalLogo: any = '/assets/images/hospitallogo.jpg'
   defaultFlag: any = '/assets/images/united-states-of-america-flag-xs.png';
   defaultImageName = "defaultImage.png"
   fileMaxSize: number = 4000000;
@@ -44,7 +43,7 @@ export class CommonService implements OnDestroy {
       if (data) {
         this.loggedInUser = data;
       } else {
-        this.loggedInUser = JSON.parse(localStorage.getItem('userOfKardio'));
+        this.loggedInUser = JSON.parse(localStorage.getItem('userOfOrg'));
       }
     });
     this.setColor()
@@ -58,28 +57,25 @@ export class CommonService implements OnDestroy {
   setDataInLocalStorageAndObservable(setType, userData) {
     var data;
     if (setType == 'theme') {
-      data = JSON.parse(localStorage.getItem('userOfKardio'));
-      data.selected_hospital_id = userData['hospital_id'];
-      data.selected_hospital_name = userData['hospital_name'];
-      data.hospital_image = userData['hospital_image']
+      data = JSON.parse(localStorage.getItem('userOfOrg'));
       data.primary_color = userData['--primary-color'];
       data.secondary_color = userData['--secondary-color'];
       data.text_color = userData['--text-color'];
     }
     else if(setType=='econsult-count'){
-      data = JSON.parse(localStorage.getItem('userOfKardio'));
+      data = JSON.parse(localStorage.getItem('userOfOrg'));
       data.econsult_case_count=userData;
     }
     else {
       data = userData;
     }
-    localStorage.setItem('userOfKardio', JSON.stringify(data));
+    localStorage.setItem('userOfOrg', JSON.stringify(data));
     this.userServiceService.setObservableData(data)
     this.initializeData()
   }
 
   /**
-   * Common function to set theme color according to selected hospital.
+   * Common function to set theme color according to selected org.
    */
   setColor() {
     var themeColor = {
@@ -256,9 +252,9 @@ export class CommonService implements OnDestroy {
    * Common function to logout & clear localstorage
    */
   logout() {
-    localStorage.removeItem('userOfKardio');
+    localStorage.removeItem('userOfOrg');
     this.loggedInUser = null;
-    localStorage.removeItem('isKardioUserLoggedIn');
+    localStorage.removeItem('isUserLoggedIn');
     localStorage.removeItem('accessToken');
     this.router.navigate(['/auth/login']);
   }

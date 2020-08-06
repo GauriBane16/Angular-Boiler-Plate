@@ -283,8 +283,8 @@ export class LocalDataService {
 
 
   address = {
-    label: "Hospital Address",
-    requiredError: "Hospital Address is required"
+    label: "org Address",
+    requiredError: "org Address is required"
   };
 
   Address_Line1 = {

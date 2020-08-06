@@ -149,7 +149,7 @@ export class HighchartsService {
       cursor: 'pointer'
     }
   };
-  HospitalInformation = {
+  orgInformation = {
     chart: this.chart,
     title: {
       text: ''
@@ -214,14 +214,14 @@ export class HighchartsService {
     });
   }
 
-  createHospitalInformationChart(hospital_id) {
+  createorgInformationChart(org_id) {
     var chartList = []
     var requestData;
 
-    if (hospital_id != "null") {
+    if (org_id != "null") {
       requestData = {
         id: this.commonService.loggedInUser.id,
-        hospital_id: hospital_id
+        org_id: org_id
       }
     }
     else {
@@ -235,13 +235,13 @@ export class HighchartsService {
           if (res.status.code != '00')
             reject(true);
           else {
-            var hospital_data = res.result;
+            var org_data = res.result;
 
-            for (var i = 0; i < hospital_data.length; i++) {
-              var HospitalInformation = {
+            for (var i = 0; i < org_data.length; i++) {
+              var orgInformation = {
                 chart: this.chart,
                 title: {
-                  text: hospital_data[i].hospital_name
+                  text: org_data[i].org_name
                 },
 
                 tooltip: {
@@ -255,16 +255,16 @@ export class HighchartsService {
 
                 series: [
                   {
-                    name: hospital_data[i].hospital_name,
+                    name: org_data[i].org_name,
                     showInLegend: true,
-                    data: hospital_data[i].data,
+                    data: org_data[i].data,
                     innerSize: '50%',
                     type: 'pie',
                   }
                 ]
 
               }
-              chartList.push(HospitalInformation);
+              chartList.push(orgInformation);
             }
           }
           resolve(chartList);
