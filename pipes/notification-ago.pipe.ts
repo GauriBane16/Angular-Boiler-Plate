@@ -21,28 +21,10 @@ export class NotificationAgoPipe implements PipeTransform {
  element.agoTime = (days!=0?(days + "d " ):(hours!=0?(hours + "h " ):(minutes!=0?(minutes + "m " ):(seconds!=0?(seconds + "s " ):''))));
       });
       current.agoTime=current.data[0].agoTime;
- 
-        // if(!previous[current[property]]) {
-        //     previous[current[property]] = [current];
-        // } else {
-
-        //     previous[current[property]].push(current);
-        // }
-
-      
     });
  console.log("groupedCollection",collection)
     
-    // this.commonService.loggedInUser.unseen_count=unseen_count;
-    // this.commonService.setDataInLocalStorageAndObservable(
-    //   "userData",
-    //   this.commonService.loggedInUser
-    // );
     return collection;
 }
-
-  // transform(value: any, ...args: any[]): any {
-  //   return null;
-  // }
 
 }

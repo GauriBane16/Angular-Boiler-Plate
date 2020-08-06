@@ -178,7 +178,7 @@ export class HighchartsService {
 
 
   getDashoardUserWiseClassification() {
-    this.commonService.apiCall(this.apiListService.getDashboardUserWiseClassification, { id: this.commonService.loggedInUser.id })
+    this.commonService.apiCall(this.apiListService.getData, { id: this.commonService.loggedInUser.id })
       .then((res: any) => {
         this.userWiseClasificationData = res.result.data;
         this.totalValue = res.result.total;
@@ -189,7 +189,7 @@ export class HighchartsService {
 
   createUserWiseClasificationChart() {
     return new Promise((resolve, reject) => {
-      this.commonService.apiCall(this.apiListService.getDashboardUserWiseClassification, { id: this.commonService.loggedInUser.id })
+      this.commonService.apiCall(this.apiListService.getData, { id: this.commonService.loggedInUser.id })
         .then((res: any) => {
           if (res.status.code != '00')
             reject(true);
@@ -230,7 +230,7 @@ export class HighchartsService {
       }
     }
     return new Promise((resolve, reject) => {
-      this.commonService.apiCall(this.apiListService.getDashboardHospitalInformation, requestData)
+      this.commonService.apiCall(this.apiListService.getData, requestData)
         .then((res: any) => {
           if (res.status.code != '00')
             reject(true);
@@ -300,7 +300,7 @@ export class HighchartsService {
       series: []
     };
     return new Promise((resolve, reject) => {
-      this.commonService.apiCall(this.apiListService.getDashboardAllUsersData, reqData)
+      this.commonService.apiCall(this.apiListService.getData, reqData)
         .then((res: any) => {
           chartOptions.series = res.result.series;
           chartOptions.xAxis.categories = res.result.categories;

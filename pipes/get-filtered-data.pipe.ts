@@ -11,7 +11,7 @@ constructor(private commonService:CommonService){
   transform(value: any, ...args: any[]): any {
     // debugger;
     var data=[]
-    if(this.commonService.loggedInUser.role_name=='Cardiologist' && this.commonService.loggedInUser.role_name=='Super Admin'){
+    if(this.commonService.loggedInUser.role_name=='Superadmin' ){
       value.forEach(element => {
         if(element.active_status){
           data.push(element);

@@ -4,16 +4,15 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class LocalDataService {
-  tabarray = [{id:1,name:'Health System Management'}, {id:2,name:'Provider Management'}, {id:3,name:'Patient Management'}, {id:4,name:'Hospital Location'},{id:5,name:'E-Clinic Management'}];
-  // tabArrayForEconsultant=[{id:6,name:'PCP User Management'}]
-  tabarrayForHospitalAdmin = [{id:2,name:'Provider Management'}, {id:3,name:'Patient Management'}];
+  tabarray = [{id:1,name:'tab1'}, {id:2,name:'tab2'}, {id:3,name:'tab3'}];
+ 
   todaydate: Date = new Date();
 
   defaultCountry=233;
 
   Firstname = {
     label: "First Name",
-    placeholder: "Enter Firstname",
+    placeholder: "Enter First name",
     maxlength: 30,
     minlength: 1,
     pattern:new RegExp("^([A-Za-z]{1,30}\.?)$")  ,
@@ -22,12 +21,12 @@ export class LocalDataService {
     patternError: "Contains Only alphabets",
     maxlengthError: "Max 30 characters",
     minlengthError: "Min 1 characters",
-    requiredError: "Firstname is required"
+    requiredError: "First name is required"
   };
 
   Lastname = {
     label: "Last Name",
-    placeholder: "Enter Lastname",
+    placeholder: "Enter Last name",
     maxlength: 30,
     minlength: 1,
     // pattern: new RegExp("^[-a-zA-Z-()].+(\\s[-a-zA-Z-()].+(?:(?!\\s{0,})))*$"),
@@ -36,12 +35,12 @@ export class LocalDataService {
     patternError: "Contains Only alphabets",
     maxlengthError: "Max 30 characters",
     minlengthError: "Min 1 characters",
-    requiredError: "Lastname is required"
+    requiredError: "Last name is required"
   };
 
   Middlename = {
     label: "Middle Name",
-    placeholder: "Enter Middlename",
+    placeholder: "Enter Middle name",
     maxlength: 30,
     minlength: 1,
     // pattern: new RegExp("^[-a-zA-Z-()].+(\\s[-a-zA-Z-()].+(?:(?!\\s{0,})))*$"),
@@ -49,7 +48,7 @@ export class LocalDataService {
     patternError: "Contains Only alphabets",
     maxlengthError: "Max 30 characters",
     minlengthError: "Min 1 characters",
-    requiredError: "Middlename is required"
+    requiredError: "Middle name is required"
   };
 
   Title = {
@@ -72,7 +71,8 @@ export class LocalDataService {
     patternError: "Invalid speciality only and comma seprated text allow",
     maxlengthError: "Max 254 characters",
     minlengthError: "Min 2 characters",
-    requiredError: "Specialty is required"
+    requiredError: "Specialty is required",
+    NoDatalabel:"No Data"
   };
   Subspeciality = {
     label: "Subspeciality",
@@ -83,7 +83,8 @@ export class LocalDataService {
     patternError: "Invalid Subspeciality only and comma seprated text allow",
     maxlengthError: "Max 254 characters",
     minlengthError: "Min 2 characters",
-    requiredError: "Subspecialty is required"
+    requiredError: "Subspecialty is required",
+    NoDatalabel:"No Data"
   };
 
   Phone: any = {
@@ -139,6 +140,8 @@ export class LocalDataService {
     requiredError: "Fax Number required"
   };
 
+ 
+
   Country_Code: any = {
     label: "Country Code",
     //pattern: new RegExp('^[2-9]\d{2}-\d{3}-\d{4}$'),
@@ -171,34 +174,31 @@ export class LocalDataService {
     label: "Gender",
     pattern: new RegExp("^(?:m|M|male|Male|f|F|female|Female)$"),
     patternError: "Pattern does't match",
-    Error: "Please select gender"
+    Error: "Please select gender",
+    NoDatalabel:"No Data"
   };
 
-  Hcpa = {
-    label: "Name of Health Care Power Attorney",
-    placeholder:"Name of Health Care Power Attorney",
-    maxlength:"30",
-    minlength:'1',
-    pattern: new RegExp("^[-a-zA-Z-()].+(\\s[-a-zA-Z-()].+(?:(?!\\s{1,30})))*$"),
-    patternError: "Invalid name",
-    maxlengthError: "Max 30 characters",
-    minlengthError: "Min 1 characters",
-    requiredError: "Fullname is required"
-  }
+
+  getErrorPassword = {
+    requiredError:
+      "New password is required ",
+    reqyurementError:
+      "Atleast one uppercase letter, one lowercase letter, one number and one special character"
+  };
 
   Password = {
     label: "Password",
     placeholder: "Password",
-    maxlength: 12,
+    maxlength: 15,
     minlength: 6,
     // pattern:
     //   "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{6,12}$",
     // pattern:new RegExp("^([A-Za-z]{1,30}\.?)$")  ,
-    pattern:"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,12}$",
+    pattern:"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,15}$",
     // patternError:
     //   "Minimum 6 characters including atleast one upper case,one lower case, One special character and number",
     patternError:"Atleast one uppercase letter, one lowercase letter, one number and one special character",  
-    maxlengthError: "Maximum 12 characters are allowed",
+    maxlengthError: "Maximum 15 characters are allowed",
     minlengthError: "Mininum 6 characters are required",
     requiredError: "Password is required",
     passwordNotMatch: "Password does not match"
@@ -237,31 +237,8 @@ export class LocalDataService {
     patternError: "Invalid First name ",
     maxlengthError: "Max 20 characters",
     minlengthError: "Min 1 characters",
-    requiredError: "Role is required"
-  };
-
-  Hospitalname = {
-    label: "Hospital Name",
-    placeholder: "Enter Hospital name",
-    maxlength: 254,
-    minlength: 1,
-    pattern: new RegExp("^[-a-zA-Z-()]+(\\s[-a-zA-Z-()]+(?:(?!\\s{2,})))*$"),
-    patternError: "Invalid Hospital Name",
-    maxlengthError: "Max 254 characters",
-    minlengthError: "Min 1 characters",
-    requiredError: "Hospital Name is required"
-  };
-
-  HealthSystem = {
-    label: "Health System",
-    placeholder: "Enter Health System",
-    maxlength: 50,
-    minlength: 1,
-    pattern: new RegExp("^[-a-zA-Z-()]+(\\s[-a-zA-Z-()]+(?:(?!\\s{2,})))*$"),
-    patternError: "Invalid Health System Name",
-    maxlengthError: "Max 50 characters",
-    minlengthError: "Min 1 characters",
-    requiredError: "Health System is required"
+    requiredError: "Role is required",
+    NoDatalabel:"No Data"
   };
 
   Height = {
@@ -304,38 +281,10 @@ export class LocalDataService {
     requiredError: "Date of birth required"
   };
 
-  Admitted_date = {
-    label: "Addmitted Date",
-    placeholder: "Addmitted on",
-    pattern: new RegExp("[0-9]{2}[/][0-9]{2}[/][0-9]{4}"),
-    patternError: "Invalid date format",
-    requiredError: "Addmitted date required"
-  };
-
-  Discharged_date = {
-    label: "Addmitted Date",
-    placeholder: "Discharged on",
-    pattern: new RegExp("[0-9]{2}/[0-9]{2}/[0-9]{4}"),
-    patternError: "Invalid date format",
-    requiredError: "Discharged date required"
-  };
-
-  getErrorPassword = {
-    requiredError:
-      "New password is required (at least eight characters, one uppercase letter and one number)",
-    reqyurementError:
-      "Password needs to be at least eight characters, one uppercase letter and one number"
-  };
 
   address = {
     label: "Hospital Address",
     requiredError: "Hospital Address is required"
-  };
-
-  HealthSystemAddress = {
-    label: "Health System Address",
-    placeholder: "Enter Health System Address",
-    requiredError: "Health System Address is required"
   };
 
   Address_Line1 = {
@@ -353,34 +302,25 @@ export class LocalDataService {
   Country = {
     label: "Select Country",
     placeholder: "Enter country",
-    requiredError: "Country is required"
+    requiredError: "Country is required",
+    NoDatalabel:"No countries"
   };
+
 
   State = {
     label: "Select State",
     placeholder: "Enter State",
-    requiredError: "State is  required"
+    requiredError: "State is  required",
+    NoDatalabel:"No states"
   };
 
   City = {
     label: "Select City",
     placeholder: "Enter City",
-    requiredError: "City is required"
+    requiredError: "City is required",
+    NoDatalabel:"No cities"
   };
 
-  PCPClinic = {
-    label: "PCP Clinic",
-    placeholder: "Enter PCP Clinic",
-    maxlength: 254,
-    minlength: 1,
-    pattern: new RegExp("^[-a-zA-Z-()]+(\\s[-a-zA-Z-()]+(?:(?!\\s{2,})))*$"),
-    patternError: "Invalid PCP Clinic Name",
-    maxlengthError: "Max 254 characters",
-    minlengthError: "Min 1 characters",
-    requiredError: "PCP Clinic is required"
-  };
-
- 
 
   /**
    *  @AUTO_LOGOUT_IDLE_TIMER auto logout idel time

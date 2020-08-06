@@ -47,7 +47,7 @@ export class ApiService {
     var Token;
     let headers;
     if (headerFlag) {
-      var tokenData = localStorage.getItem('accessTokenOfKardio')
+      var tokenData = localStorage.getItem('accessToken')
       if (tokenData) {
         Token = JSON.parse(tokenData);//res
         headers = { auth: Token };
@@ -66,7 +66,7 @@ export class ApiService {
         else if (decryptedData.body.result) {
           var accessToken = decryptedData.body.result.token;
           if (accessToken) {
-            localStorage.setItem('accessTokenOfKardio', JSON.stringify(accessToken));
+            localStorage.setItem('accessToken', JSON.stringify(accessToken));
           }
           return decryptedData.body;
         }
@@ -80,7 +80,7 @@ export class ApiService {
         // else if (data.body.result) {
         //   var accessToken = data.body.result.token;
         //   if (accessToken) {
-        //     localStorage.setItem('accessTokenOfKardio', JSON.stringify(accessToken));
+        //     localStorage.setItem('accessToken', JSON.stringify(accessToken));
         //   }
         //   return data.body;
         // }

@@ -9,7 +9,7 @@ import * as CryptoJS from 'crypto-js';
  * This is common class to encrypt & decrypt data.
  */
 export class CryptoService {
-  key = "j6qa>#<P*'4VFKt7";
+  key = "encryption key";
   constructor() { }
 
   /**

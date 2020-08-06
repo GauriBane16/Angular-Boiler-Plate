@@ -259,7 +259,7 @@ export class CommonService implements OnDestroy {
     localStorage.removeItem('userOfKardio');
     this.loggedInUser = null;
     localStorage.removeItem('isKardioUserLoggedIn');
-    localStorage.removeItem('accessTokenOfKardio');
+    localStorage.removeItem('accessToken');
     this.router.navigate(['/auth/login']);
   }
 

@@ -30,14 +30,14 @@ export class LoginGuard implements CanActivate  {
               case 'Super Admin' :
                   this.router.navigate(['/superadmin/dashboard']);
                   break;
-              case 'Hospital Admin' :
-                      this.router.navigate(['/hospitaladmin/dashboard']);
+              case 'Admin' :
+                      this.router.navigate(['/admin/dashboard']);
                       break;
-              case 'Provider' :
-                  this.router.navigate(['/provider/provider-dashboard']);
+              case 'User' :
+                  this.router.navigate(['/user/user-dashboard']);
                   break;
-              case 'eConsultant' :
-                    this.router.navigate(['/e-consult/dashboard']);
+              case 'Supplier' :
+                    this.router.navigate(['/supplier/dashboard']);
                     break;    
               default: return true;            
             }
@@ -53,7 +53,7 @@ export class LoginGuard implements CanActivate  {
  */
     isUserLoggedIn():Promise<boolean>{
           return new Promise ((resolve,reject) =>{
-              if(!localStorage.getItem('accessTokenOfKardio')){
+              if(!localStorage.getItem('accessToken')){
                 return reject(true);
               }
                 resolve(true);	
